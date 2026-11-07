@@ -20,7 +20,12 @@ namespace Barry.App.Editor
     {
         const string Root = "Assets/Barry";
         const float Eye = 1.6f;
+        // HANDOFF §4 says 30°, but flat panels 0.45 m wide at 1.3 m span ±9.8° while the 1.8 m camera
+        // screen/header at 2.0 m span ±24.2°. Clearing them from the head position needs >= 34°, so use 36°
+        // (2° gap). Vertically the side panels (±16.7°) are already inside the control strip (-21°) bound.
+        const float SidePanelYaw = 36f;
         static TMP_FontAsset body, mono, brand;
+        static ThemeTokens look;   // Galactic tokens: build-time colours so the scene reads correctly in Edit mode too
 
         [MenuItem("Barry/Build Dashboard Scene")]
         public static void Build()
@@ -40,6 +45,7 @@ namespace Barry.App.Editor
             var config = Load<BarryConfig>("Config/BarryConfig.asset");
             var galactic = Load<ThemeTokens>("Theme/Tokens/Galactic.asset");
             var light = Load<ThemeTokens>("Theme/Tokens/Light.asset");
+            look = galactic;
 
             // Rig: camera at eye height, headset-tracked.
             var camGo = new GameObject("Main Camera") { tag = "MainCamera" };
@@ -63,12 +69,17 @@ namespace Barry.App.Editor
             var camera = BuildCameraScreen();
             Place(camera.gameObject, new Vector3(0, Eye, 2.0f), Quaternion.identity);
             var status = BuildStatus();
-            PlaceOnArc(status.gameObject, -30f, 1.3f, Eye);
+            PlaceOnArc(status.gameObject, -SidePanelYaw, 1.3f, Eye);
             var actions = BuildActions();
-            PlaceOnArc(actions.gameObject, 30f, 1.3f, Eye);
+            PlaceOnArc(actions.gameObject, SidePanelYaw, 1.3f, Eye);
             var strip = BuildControlStrip();
             float below = 25f * Mathf.Deg2Rad;
             Place(strip.gameObject, new Vector3(0, Eye - 0.9f * Mathf.Sin(below), 0.9f * Mathf.Cos(below)), Quaternion.Euler(15f, 0, 0));
+
+            // TODO(#39/#40): once EnvironmentView and RoundedPanel land, enable these (signatures unconfirmed):
+            //   EnvironmentView.Create(galactic);                              // sky, stars, nebula, planet, floor grid, platform
+            //   foreach (var c in new[] { header, status, actions, strip }) RoundedPanel.Apply(c, galactic, glow: 0.35f);
+            //   RoundedPanel.Apply(camera, galactic, glow: galactic.cameraGlowAlpha);   // camera screen: stronger glow (0.55)
 
             // App + controller.
             var appGo = new GameObject("BarryApp");
@@ -184,14 +195,14 @@ namespace Barry.App.Editor
                 float y = 430 + i * 80;
                 Label(c.transform, names[i] + "L", names[i], 24, 24, y, 120, 40, ThemeRole.TextPrimary, FontRole.Body);
                 var tr = Img(c.transform, names[i] + "Track", ThemeRole.NeutralFill);
-                At(tr.rectTransform, 145, y + 8, 180, 26);
+                At(tr.rectTransform, 145, y + 8, 175, 26);
                 var mid = Img(tr.transform, "Center", ThemeRole.NeutralBorder);
                 mid.rectTransform.anchorMin = new Vector2(.5f, 0); mid.rectTransform.anchorMax = new Vector2(.5f, 1);
                 mid.rectTransform.sizeDelta = new Vector2(2, 0);
                 var f = Img(tr.transform, names[i] + "Fill", ThemeRole.Accent);
                 f.rectTransform.anchorMin = new Vector2(.5f, 0); f.rectTransform.anchorMax = new Vector2(.5f, 1);
                 f.rectTransform.offsetMin = f.rectTransform.offsetMax = Vector2.zero;
-                var v = Value(c.transform, names[i] + "V", "0.00", 26, 335, y, 95, 40);
+                var v = Value(c.transform, names[i] + "V", "0.00", 28, 330, y, 100, 40);
                 v.alignment = TextAlignmentOptions.Right;
                 rows[i] = new StatusPanelView.BarRow { value = v, fill = f.rectTransform };
             }
@@ -311,7 +322,9 @@ namespace Barry.App.Editor
             var go = new GameObject(name, typeof(RectTransform), typeof(Image));
             go.transform.SetParent(parent, false);
             go.AddComponent<ThemeTarget>().colorRole = role;
-            return go.GetComponent<Image>();
+            var image = go.GetComponent<Image>();
+            if (look != null) image.color = ThemeApplier.Resolve(look, role);
+            return image;
         }
 
         static void Frame(Transform parent, float w, float h, string name)
@@ -336,13 +349,16 @@ namespace Barry.App.Editor
             var tt = go.AddComponent<ThemeTarget>();
             tt.colorRole = color; tt.applyFont = true; tt.fontRole = font;
             t.font = font == FontRole.Brand ? brand : font == FontRole.Mono ? mono : body;
+            if (look != null) t.color = ThemeApplier.Resolve(look, color);   // opaque; never default white
             return t;
         }
 
         static TMP_Text Value(Transform parent, string name, string text, float size, float x, float y, float w, float h)
         {
-            var t = Label(parent, name, text, size, x, y, w, h, ThemeRole.TextPrimary, FontRole.Mono, bold: true);
-            t.GetComponent<ThemeTarget>().applyColor = false;   // colour driven by StatusTone
+            // Cap height >= 1.2 cm per metre: at 1.3 m that is 15.6 mm; JetBrains Mono caps ~0.73 em => size >= 22.
+            var t = Label(parent, name, text, Mathf.Max(size, 28f), x, y, w, h, ThemeRole.TextPrimary, FontRole.Mono, bold: true);
+            if (look != null) { var c = look.textPrimary; c.a = 1f; t.color = c; }
+            t.GetComponent<ThemeTarget>().applyColor = false;   // colour driven by StatusTone at runtime
             return t;
         }
 

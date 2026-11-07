@@ -43,7 +43,7 @@ namespace Barry.UI
             t.text = v.Text;
             var k = ThemeApplier.Current;
             if (k == null) return;
-            if (v.Tone == StatusTone.Neutral) t.color = k.textPrimary;
+            if (v.Tone == StatusTone.Neutral) { var c = k.textPrimary; c.a = 1f; t.color = c; }
             else { ToneColors.Resolve(v.Tone, k, out var fg, out _); t.color = fg; }
         }
 

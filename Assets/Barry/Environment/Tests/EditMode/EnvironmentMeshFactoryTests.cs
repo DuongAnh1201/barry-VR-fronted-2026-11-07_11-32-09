@@ -96,5 +96,33 @@ namespace Barry.Environment.Tests
             Assert.That(shader, Is.Not.Null, resourceName + " must be retained in player builds");
             Assert.That(shader.name, Is.EqualTo(shaderName));
         }
+
+        [Test]
+        public void PlanetPlacement_HasRequestedDirectionDistanceAndAngularRadius()
+        {
+            const float distance = 30f;
+            Vector3 eye = new Vector3(0f, 1.6f, 0f);
+            Vector3 position = EnvironmentPlacement.FromEye(38f, 24.5f, distance);
+            float scale = EnvironmentPlacement.ScaleForAngularRadius(2.7f, distance);
+            Vector3 direction = position - eye;
+
+            float azimuth = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            float elevation = Mathf.Asin(direction.y / direction.magnitude) * Mathf.Rad2Deg;
+            float angularRadius = Mathf.Atan(scale / direction.magnitude) * Mathf.Rad2Deg;
+
+            Assert.That(direction.magnitude, Is.EqualTo(distance).Within(0.001f));
+            Assert.That(azimuth, Is.EqualTo(38f).Within(0.001f));
+            Assert.That(elevation, Is.EqualTo(24.5f).Within(0.001f));
+            Assert.That(angularRadius, Is.EqualTo(2.7f).Within(0.001f));
+        }
+
+        [Test]
+        public void MoonScale_HasHalfDegreeAngularRadius()
+        {
+            const float distance = 30f;
+            float scale = EnvironmentPlacement.ScaleForAngularRadius(0.5f, distance);
+            Assert.That(Mathf.Atan(scale / distance) * Mathf.Rad2Deg,
+                Is.EqualTo(0.5f).Within(0.001f));
+        }
     }
 }

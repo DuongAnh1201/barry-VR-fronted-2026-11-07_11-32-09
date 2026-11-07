@@ -5,6 +5,27 @@ using UnityEngine;
 
 namespace Barry.Environment
 {
+    public static class EnvironmentPlacement
+    {
+        public static Vector3 FromEye(
+            float azimuthDegrees,
+            float elevationDegrees,
+            float distance,
+            float eyeHeight = 1.6f)
+        {
+            float azimuth = azimuthDegrees * Mathf.Deg2Rad;
+            float elevation = elevationDegrees * Mathf.Deg2Rad;
+            float horizontalDistance = Mathf.Cos(elevation) * distance;
+            return new Vector3(
+                Mathf.Sin(azimuth) * horizontalDistance,
+                eyeHeight + Mathf.Sin(elevation) * distance,
+                Mathf.Cos(azimuth) * horizontalDistance);
+        }
+
+        public static float ScaleForAngularRadius(float angularRadiusDegrees, float distance) =>
+            Mathf.Tan(angularRadiusDegrees * Mathf.Deg2Rad) * distance;
+    }
+
     [DisallowMultipleComponent]
     public sealed class EnvironmentView : MonoBehaviour
     {
@@ -15,6 +36,7 @@ namespace Barry.Environment
         private Material platformMaterial;
         private Material planetMaterial;
         private Material ringMaterial;
+        private Material moonMaterial;
         private Material previousSkybox;
 
         public static EnvironmentView Create(Transform parent, ThemeTokens tokens)
@@ -57,6 +79,7 @@ namespace Barry.Environment
             planetMaterial.SetColor("_MidColor", tokens.planetMid);
             planetMaterial.SetColor("_DarkColor", tokens.planetDark);
             ringMaterial.SetColor("_Color", tokens.planetRing);
+            moonMaterial.SetColor("_Color", new Color32(0xE9, 0xE4, 0xFF, 217));
         }
 
         private void Build()
@@ -67,6 +90,7 @@ namespace Barry.Environment
             platformMaterial = CreateMaterial("PlatformDisc");
             planetMaterial = CreateMaterial("Planet");
             ringMaterial = CreateMaterial("Ring");
+            moonMaterial = CreateMaterial("Ring");
             RenderSettings.skybox = skyMaterial;
 
             CreateMeshObject("Floor", EnvironmentMeshFactory.CreateFloor(), floorMaterial,
@@ -74,14 +98,18 @@ namespace Barry.Environment
             CreateMeshObject("Operator Platform", EnvironmentMeshFactory.CreateDisc(), platformMaterial,
                 new Vector3(0f, 0.005f, 0f), Quaternion.identity, Vector3.one);
 
-            // About 40 degrees right and 25 degrees above a 1.6 m eye at 30 m.
-            // The larger scale preserves the intended apparent size at that distance.
-            const float planetScale = 2.5f;
-            Vector3 planetPosition = new Vector3(17.5f, 14.3f, 20.8f);
+            const float celestialDistance = 30f;
+            float planetScale = EnvironmentPlacement.ScaleForAngularRadius(2.7f, celestialDistance);
+            Vector3 planetPosition = EnvironmentPlacement.FromEye(38f, 24.5f, celestialDistance);
             CreateMeshObject("Ringed Planet", EnvironmentMeshFactory.CreateUvSphere(), planetMaterial,
                 planetPosition, Quaternion.identity, Vector3.one * planetScale);
-            CreateMeshObject("Planet Ring", EnvironmentMeshFactory.CreateAnnulus(), ringMaterial,
-                planetPosition, Quaternion.Euler(70f, 0f, -15f), Vector3.one * planetScale);
+            CreateMeshObject("Planet Ring", EnvironmentMeshFactory.CreateAnnulus(64, 1.62f, 1.87f), ringMaterial,
+                planetPosition, Quaternion.Euler(11f, 0f, -14f), Vector3.one * planetScale);
+
+            float moonScale = EnvironmentPlacement.ScaleForAngularRadius(0.5f, celestialDistance);
+            Vector3 moonPosition = EnvironmentPlacement.FromEye(-40f, 25f, celestialDistance);
+            CreateMeshObject("Pale Moon", EnvironmentMeshFactory.CreateUvSphere(12, 6), moonMaterial,
+                moonPosition, Quaternion.identity, Vector3.one * moonScale);
         }
 
         private Material CreateMaterial(string resourceName)

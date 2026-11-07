@@ -30,14 +30,16 @@ namespace Barry.App.Editor
                 Debug.LogWarning("Barry: exit Play mode before running 'Build Dashboard Scene' (scene creation is not allowed in Play mode).");
                 return;
             }
+            // NewScene(Single) unloads unused assets, so load assets only after it;
+            // references loaded earlier serialize as null.
+            var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+
             body = Load<TMP_FontAsset>("Theme/Fonts/Inter SDF.asset");
             mono = Load<TMP_FontAsset>("Theme/Fonts/JetBrainsMono SDF.asset");
             brand = Load<TMP_FontAsset>("Theme/Fonts/Orbitron SDF.asset");
             var config = Load<BarryConfig>("Config/BarryConfig.asset");
             var galactic = Load<ThemeTokens>("Theme/Tokens/Galactic.asset");
             var light = Load<ThemeTokens>("Theme/Tokens/Light.asset");
-
-            var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
             // Rig: camera at eye height, headset-tracked.
             var camGo = new GameObject("Main Camera") { tag = "MainCamera" };

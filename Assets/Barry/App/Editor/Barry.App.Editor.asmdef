@@ -1,0 +1,7 @@
+{
+  "name": "Barry.App.Editor",
+  "rootNamespace": "Barry.App.Editor",
+  "references": ["Barry.App","Barry.UI","Barry.Config","Barry.Theme","Barry.XR","Unity.TextMeshPro","UnityEngine.UI","Unity.InputSystem","Unity.XR.Interaction.Toolkit"],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": false
+}

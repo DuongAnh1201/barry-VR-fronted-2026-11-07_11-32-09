@@ -25,6 +25,11 @@ namespace Barry.App.Editor
         [MenuItem("Barry/Build Dashboard Scene")]
         public static void Build()
         {
+            if (EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode)
+            {
+                Debug.LogWarning("Barry: exit Play mode before running 'Build Dashboard Scene' (scene creation is not allowed in Play mode).");
+                return;
+            }
             body = Load<TMP_FontAsset>("Theme/Fonts/Inter SDF.asset");
             mono = Load<TMP_FontAsset>("Theme/Fonts/JetBrainsMono SDF.asset");
             brand = Load<TMP_FontAsset>("Theme/Fonts/Orbitron SDF.asset");

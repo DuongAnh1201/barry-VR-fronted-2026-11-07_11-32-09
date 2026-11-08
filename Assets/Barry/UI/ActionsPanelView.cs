@@ -17,6 +17,7 @@ namespace Barry.UI
         [SerializeField] RectTransform listRoot;
         [SerializeField] Button itemTemplate;      // inactive template, cloned per action
         [SerializeField] TMP_Text footer;
+        [SerializeField] TMP_Text emptyLabel;   // muted 'No actions available' when open with no actions
 
         [SerializeField] float mmPerMockupPx = 1.6667f;
         float BorderMm(float px) => px * mmPerMockupPx;
@@ -41,6 +42,7 @@ namespace Barry.UI
 
             foreach (var b in spawned) if (b != null) Destroy(b.gameObject);
             spawned.Clear();
+            if (emptyLabel != null) emptyLabel.gameObject.SetActive(!m.IsCollapsed && m.Items.Count == 0);
             if (m.IsCollapsed) return;
 
             var k = ThemeApplier.Current;

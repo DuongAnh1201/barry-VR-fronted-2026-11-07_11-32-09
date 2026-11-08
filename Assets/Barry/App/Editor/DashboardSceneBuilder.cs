@@ -4,6 +4,7 @@ using Barry.Theme;
 using Barry.UI;
 using Barry.UI.Styling;
 using Barry.XR;
+using Barry.XR.Tooltips;
 using TMPro;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -74,6 +75,12 @@ namespace Barry.App.Editor
 
             EnvironmentView.Create(null, galactic);
 
+            // Tracked controllers (poses from the XR device; Edit-mode defaults put them in view).
+            var rig = new GameObject("XR Rig");
+            var leftCtrl = NewController(rig.transform, "Left Controller", "LeftHand", new Vector3(-0.25f, Eye - 0.35f, 0.35f));
+            var rightCtrl = NewController(rig.transform, "Right Controller", "RightHand", new Vector3(0.25f, Eye - 0.35f, 0.35f));
+            ControllerTooltips.Create(leftCtrl, rightCtrl, galactic);
+
             var es = new GameObject("EventSystem");
             es.AddComponent<EventSystem>();
             es.AddComponent<XRUIInputModule>();
@@ -124,6 +131,17 @@ namespace Barry.App.Editor
             Debug.Log("Barry: Dashboard scene built.");
         }
 
+        static Transform NewController(Transform parent, string name, string hand, Vector3 editModePosition)
+        {
+            var go = new GameObject(name);
+            go.transform.SetParent(parent, false);
+            go.transform.position = editModePosition;
+            var pose = go.AddComponent<TrackedPoseDriver>();
+            pose.positionInput = new InputActionProperty(new InputAction("Position", binding: $"<XRController>{{{hand}}}/devicePosition"));
+            pose.rotationInput = new InputActionProperty(new InputAction("Rotation", binding: $"<XRController>{{{hand}}}/deviceRotation"));
+            return go.transform;
+        }
+
         // ---------------------------------------------------------------- panels (mockup px, scaled by S)
 
         static Canvas BuildHeader()
@@ -171,7 +189,7 @@ namespace Barry.App.Editor
             ph.transform.SetParent(inner.transform, false);
             Stretch((RectTransform)ph.transform, 0);
             var ring = Box(ph.transform, "ReticleRing", 0, 0, 44, 44, centre: true);
-            Skin(ring, M(22), Color.clear, Reticle, M(2f));
+            Skin(ring, M(22), new Color(Reticle.r, Reticle.g, Reticle.b, 0.004f), Reticle, M(2f));   // alpha 0 would be culled
             float[] tx = { 0, 0, -45, 45 }, ty = { 45, -45, 0, 0 }, tw = { 2, 2, 30, 30 }, th = { 30, 30, 2, 2 };
             for (int i = 0; i < 4; i++)
             {
@@ -238,6 +256,9 @@ namespace Barry.App.Editor
                 Skin(tr, M(4), Track, Color.clear, 0f);
                 var f = Box(tr.transform, names[i] + "Fill", 0, 0, 0, 0, stretch: 0);
                 Skin(f, M(4), look.accent, Color.clear, 0f, fillRole: ThemeRole.Accent);
+                f.rectTransform.anchorMin = new Vector2(0.5f, 0); f.rectTransform.anchorMax = new Vector2(0.5f, 1);
+                f.rectTransform.offsetMin = f.rectTransform.offsetMax = Vector2.zero;
+                f.gameObject.SetActive(false);   // value 0 = no fill, only the centre tick
                 var tick = Box(tr.transform, "CentreTick", 0, 0, 2, 12, centre: true); tick.color = ExitBorder;
                 var v = Value(c.transform, names[i] + "V", "0.00", 13, FontRole.Mono, P(202, y, 48, 16));
                 v.alignment = TextAlignmentOptions.MidlineRight;
@@ -248,7 +269,7 @@ namespace Barry.App.Editor
             Skin(chip, M(8), look.neutralFill, Color.clear, 0f, fillRole: ThemeRole.NeutralFill);
             var cdot = Box(chip.transform, "Dot", 10, 20, 8, 8);
             Skin(cdot, M(4), look.accent, Color.clear, 0f, fillRole: ThemeRole.Accent);
-            var foot = Txt(chip.transform, "Footer", "", 12, Grey3D, FontRole.Body, rect: P(26, 0, 194, 48));
+            var foot = Txt(chip.transform, "Footer", StatusPanelModel.Footer, 12, Grey3D, FontRole.Body, rect: P(26, 0, 194, 48));
             foot.textWrappingMode = TextWrappingModes.Normal;
 
             SetRef(view, "robot", vals[0]); SetRef(view, "control", vals[1]); SetRef(view, "cameraFps", vals[2]); SetRef(view, "backendRtt", vals[3]);
@@ -300,6 +321,8 @@ namespace Barry.App.Editor
             tl.alignment = TextAlignmentOptions.MidlineLeft;
             tmpl.gameObject.SetActive(false);
 
+            var empty = Txt(expanded.transform, "Empty", "No actions available", 15, Grey6B, FontRole.Body, rect: P(20, 62, 230, 24));
+            empty.gameObject.SetActive(false);   // shown by the view when the list is empty
             var foot = Txt(expanded.transform, "Footer", "", 13, ThemeRole.TextSecondary, FontRole.Body, rect: P(20, 414, 230, 36));
             foot.textWrappingMode = TextWrappingModes.Normal;
             foot.alignment = TextAlignmentOptions.BottomLeft;
@@ -309,8 +332,9 @@ namespace Barry.App.Editor
             Skin(tab, M(12), look.panelBg, look.panelBorder, M(1f), true, RoundedPanel.DefaultGlowStrength, ThemeRole.PanelBg, ThemeRole.PanelBorder);
             var tlabel = Txt(tab.transform, "Label", "ACTIONS · B", 13, Grey3D, FontRole.Mono, bold: true, align: TextAlignmentOptions.Center);
             Stretch(tlabel.rectTransform, 0);
-            tab.gameObject.SetActive(false);
+            expanded.SetActive(false);   // starts closed: only the 'ACTIONS · B' pill shows (B opens it)
 
+            SetRef(view, "emptyLabel", empty);
             SetRef(view, "expanded", expanded); SetRef(view, "collapsedTab", tab.gameObject); SetRef(view, "collapsedLabel", tlabel);
             SetRef(view, "listRoot", (RectTransform)list.transform); SetRef(view, "itemTemplate", tmpl); SetRef(view, "footer", foot);
             SetRef(view, "mmPerMockupPx", null, S);
@@ -329,11 +353,13 @@ namespace Barry.App.Editor
             var lv = new Button[3];
             for (int i = 0; i < 3; i++)
             {
+                bool selected = ControlStripView.Levels[i] == "MEDIUM";
                 var img = Box(c.transform, "Level" + ControlStripView.Levels[i], 24 + i * 102, 39.5f, 96, 52);
-                Skin(img, M(10), look.neutralFill, look.neutralBorder, M(1f));
+                if (selected) Skin(img, M(10), look.accent, look.accent, M(1f));
+                else Skin(img, M(10), look.neutralFill, look.neutralBorder, M(1f));
                 img.raycastTarget = true;
                 lv[i] = img.gameObject.AddComponent<Button>(); lv[i].targetGraphic = img;
-                var t = Txt(img.transform, "Text", ControlStripView.Levels[i], 14, Grey3D, FontRole.Body, bold: true, tracking: 0.06f, align: TextAlignmentOptions.Center);
+                var t = Txt(img.transform, "Text", ControlStripView.Levels[i], 14, selected ? Color.white : Grey3D, FontRole.Body, bold: true, tracking: 0.06f, align: TextAlignmentOptions.Center);
                 Stretch(t.rectTransform, 0);
             }
 

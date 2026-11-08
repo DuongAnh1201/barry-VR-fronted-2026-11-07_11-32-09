@@ -12,7 +12,8 @@
     "Unity.InputSystem",
     "Unity.XR.Interaction.Toolkit",
     "Barry.UI.Styling",
-    "Barry.Environment"
+    "Barry.Environment",
+    "Barry.XR.Tooltips"
   ],
   "includePlatforms": [
     "Editor"

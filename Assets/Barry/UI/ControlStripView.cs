@@ -46,11 +46,14 @@ namespace Barry.UI
             for (int i = 0; i < levelButtons.Length; i++)
             {
                 bool on = Levels[i] == selected;
-                levelButtons[i].GetComponent<Image>().color = on ? k.accent : k.neutralFill;
-                levelButtons[i].GetComponentInChildren<TMP_Text>().color = on ? Color.white : k.textPrimary;
+                var skin = levelButtons[i].GetComponent<PanelSkin>();
+                // Mockup: selected = accent/white, others #F3F1EC/#3D3D3A with #DAD5CB border.
+                if (on) skin.SetColors(k.accent, k.accent);
+                else skin.SetColors(k.neutralFill, k.neutralBorder);
+                levelButtons[i].GetComponentInChildren<TMP_Text>().color = on ? Color.white : (Color)new Color32(0x3D, 0x3D, 0x3A, 255);
             }
-            stopButton.GetComponent<Image>().color = k.dangerSolid;   // always solid danger + white text
-            stopButton.GetComponentInChildren<TMP_Text>().color = k.stopText;
+            stopButton.GetComponent<PanelSkin>().SetColors(k.dangerSolid, Color.clear, 0f);   // always solid danger + white text
+            foreach (var t in stopButton.GetComponentsInChildren<TMP_Text>(true)) t.color = k.stopText;
         }
     }
 }

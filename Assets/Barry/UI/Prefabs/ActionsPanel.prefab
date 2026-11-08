@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 24, y: -20}
-  m_SizeDelta: {x: 200, y: 32}
+  m_AnchoredPosition: {x: 33.333332, y: -33.333332}
+  m_SizeDelta: {x: 250, y: 26.666666}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4117514420361925268
 CanvasRenderer:
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4284046686
   m_fontColor: {r: 0.36862746, g: 0.3647059, b: 0.34901962, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -88,13 +88,13 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 21.666666
+  m_fontSizeBase: 21.666666
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 14
   m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -189,8 +189,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -20}
-  m_SizeDelta: {x: 176, y: 32}
+  m_AnchoredPosition: {x: 216.66666, y: -33.333332}
+  m_SizeDelta: {x: 200, y: 26.666666}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5625077755486619164
 CanvasRenderer:
@@ -222,14 +222,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: "B \xB7 close"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d37fbccb9f4a942d09a0acb3adb7ded7, type: 2}
-  m_sharedMaterial: {fileID: 6640642819274894365, guid: d37fbccb9f4a942d09a0acb3adb7ded7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ca1190f245a024a119d5a0aa91cf1924, type: 2}
+  m_sharedMaterial: {fileID: -6405385469461169174, guid: ca1190f245a024a119d5a0aa91cf1924, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4284046686
   m_fontColor: {r: 0.36862746, g: 0.3647059, b: 0.34901962, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -242,20 +242,20 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 21.369862
+  m_fontSizeBase: 21.369862
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 4
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -307,8 +307,8 @@ MonoBehaviour:
   colorRole: 15
   applyColor: 1
   applyFont: 1
-  fontRole: 0
---- !u!1 &3949311869184500579
+  fontRole: 1
+--- !u!1 &4410739920995763919
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,30 +316,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2668074558713435487}
-  - component: {fileID: 1360357748263419374}
-  - component: {fileID: 3646022146280807218}
-  - component: {fileID: 973533666397023333}
+  - component: {fileID: 9047976555455793682}
+  - component: {fileID: 2413390282430586738}
+  - component: {fileID: 2574326077171058770}
+  - component: {fileID: 6074509488939120582}
+  - component: {fileID: 6746120158489892787}
   m_Layer: 0
-  m_Name: FrameBorder
+  m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &2668074558713435487
+--- !u!224 &9047976555455793682
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3949311869184500579}
+  m_GameObject: {fileID: 4410739920995763919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6982745608927306527}
+  m_Children: []
   m_Father: {fileID: 3162792251979660870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -347,28 +347,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1360357748263419374
+--- !u!222 &2413390282430586738
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3949311869184500579}
+  m_GameObject: {fileID: 4410739920995763919}
   m_CullTransparentMesh: 1
---- !u!114 &3646022146280807218
+--- !u!114 &2574326077171058770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3949311869184500579}
+  m_GameObject: {fileID: 4410739920995763919}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.7882353, g: 0.74509805, b: 1, a: 1}
+  m_Material: {fileID: 2100000, guid: 8fb24a0f07f0c437e9c62986e74dc5b7, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -385,114 +385,42 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &973533666397023333
+--- !u!114 &6074509488939120582
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3949311869184500579}
+  m_GameObject: {fileID: 4410739920995763919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62a5bb61a577e4fbda03ffc44e8947cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 583eae7c11bbf43eca3767d17a70269b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Barry.Theme::Barry.Theme.ThemeTarget
-  colorRole: 1
-  applyColor: 1
-  applyFont: 0
-  fontRole: 0
---- !u!1 &5923644342198619547
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6982745608927306527}
-  - component: {fileID: 7156781899275803228}
-  - component: {fileID: 4930401406236836221}
-  - component: {fileID: 1013813632802305220}
-  m_Layer: 0
-  m_Name: FrameFill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &6982745608927306527
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923644342198619547}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2668074558713435487}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -4, y: -4}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &7156781899275803228
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923644342198619547}
-  m_CullTransparentMesh: 1
---- !u!114 &4930401406236836221
+  m_EditorClassIdentifier: Barry.UI.Styling::Barry.UI.Styling.RoundedPanel
+  radiusMm: 26.666666
+  borderWidthMm: 1.6666666
+  glowSizeMm: 32
+  glowStrength: 0.35
+  glow: 1
+--- !u!114 &6746120158489892787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923644342198619547}
+  m_GameObject: {fileID: 4410739920995763919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: d585e3f0367434686a1aba0c23832746, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.94}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!114 &1013813632802305220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923644342198619547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62a5bb61a577e4fbda03ffc44e8947cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Barry.Theme::Barry.Theme.ThemeTarget
-  colorRole: 0
-  applyColor: 1
-  applyFont: 0
-  fontRole: 0
+  m_EditorClassIdentifier: Barry.UI::Barry.UI.PanelSkin
+  fill: {r: 1, g: 1, b: 1, a: 0.94}
+  border: {r: 0.7882353, g: 0.74509805, b: 1, a: 1}
+  borderWidthMm: 1.6666666
+  fillFollowsTheme: 1
+  borderFollowsTheme: 1
+  fillRole: 0
+  borderRole: 1
 --- !u!1 &6009032236254890020
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +430,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6300098028801288575}
+  - component: {fileID: 7831799642753717561}
+  - component: {fileID: 4399452772753386429}
+  - component: {fileID: 2588791488393363837}
+  - component: {fileID: 6130865257482105636}
   m_Layer: 0
   m_Name: CollapsedTab
   m_TagString: Untagged
@@ -521,76 +453,37 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1245221381802531104}
   - {fileID: 8131701069023761755}
   m_Father: {fileID: 3876490502905385816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 280, y: 70}
-  m_Pivot: {x: 0, y: 1}
---- !u!1 &6050462480789117553
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1868082550704290415}
-  - component: {fileID: 4805661050482698614}
-  - component: {fileID: 8032730643118892215}
-  - component: {fileID: 2602985065246493900}
-  m_Layer: 0
-  m_Name: FrameFill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1868082550704290415
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6050462480789117553}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1245221381802531104}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -4, y: -4}
+  m_SizeDelta: {x: 233.33333, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &4805661050482698614
+--- !u!222 &7831799642753717561
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6050462480789117553}
+  m_GameObject: {fileID: 6009032236254890020}
   m_CullTransparentMesh: 1
---- !u!114 &8032730643118892215
+--- !u!114 &4399452772753386429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6050462480789117553}
+  m_GameObject: {fileID: 6009032236254890020}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.94}
-  m_RaycastTarget: 1
+  m_Material: {fileID: 2100000, guid: 8fb24a0f07f0c437e9c62986e74dc5b7, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -606,22 +499,42 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2602985065246493900
+--- !u!114 &2588791488393363837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6050462480789117553}
+  m_GameObject: {fileID: 6009032236254890020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62a5bb61a577e4fbda03ffc44e8947cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 583eae7c11bbf43eca3767d17a70269b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Barry.Theme::Barry.Theme.ThemeTarget
-  colorRole: 0
-  applyColor: 1
-  applyFont: 0
-  fontRole: 0
+  m_EditorClassIdentifier: Barry.UI.Styling::Barry.UI.Styling.RoundedPanel
+  radiusMm: 20
+  borderWidthMm: 1.6666666
+  glowSizeMm: 32
+  glowStrength: 0.35
+  glow: 1
+--- !u!114 &6130865257482105636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6009032236254890020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d585e3f0367434686a1aba0c23832746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Barry.UI::Barry.UI.PanelSkin
+  fill: {r: 1, g: 1, b: 1, a: 0.94}
+  border: {r: 0.7882353, g: 0.74509805, b: 1, a: 1}
+  borderWidthMm: 1.6666666
+  fillFollowsTheme: 1
+  borderFollowsTheme: 1
+  fillRole: 0
+  borderRole: 1
 --- !u!1 &6212191808306751652
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,8 +569,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 24, y: -70}
-  m_SizeDelta: {x: 402, y: 610}
+  m_AnchoredPosition: {x: 33.333332, y: -80}
+  m_SizeDelta: {x: 383.3333, y: 586.6666}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3437196844520873739
 MonoBehaviour:
@@ -677,7 +590,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 12
+  m_Spacing: 16.666666
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -696,7 +609,6 @@ GameObject:
   - component: {fileID: 8131701069023761755}
   - component: {fileID: 5787821822287193455}
   - component: {fileID: 5471311528105204}
-  - component: {fileID: 974131747481627085}
   m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
@@ -718,11 +630,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6300098028801288575}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 280, y: 70}
-  m_Pivot: {x: 0, y: 1}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5787821822287193455
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -753,15 +665,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "ACTIONS \xB7 B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d37fbccb9f4a942d09a0acb3adb7ded7, type: 2}
-  m_sharedMaterial: {fileID: 6640642819274894365, guid: d37fbccb9f4a942d09a0acb3adb7ded7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ca1190f245a024a119d5a0aa91cf1924, type: 2}
+  m_sharedMaterial: {fileID: -6405385469461169174, guid: ca1190f245a024a119d5a0aa91cf1924, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 0.35686275, g: 0.24705882, b: 0.8509804, a: 1}
+  m_fontColor: {r: 0.23921569, g: 0.23921569, b: 0.22745098, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -778,8 +690,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 21.666666
+  m_fontSizeBase: 21.666666
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -823,22 +735,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &974131747481627085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6417056962015858427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62a5bb61a577e4fbda03ffc44e8947cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Barry.Theme::Barry.Theme.ThemeTarget
-  colorRole: 2
-  applyColor: 1
-  applyFont: 1
-  fontRole: 0
 --- !u!1 &6616109334434267423
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,8 +770,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 24, y: -695}
-  m_SizeDelta: {x: 402, y: 70}
+  m_AnchoredPosition: {x: 33.333332, y: -690}
+  m_SizeDelta: {x: 383.3333, y: 60}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &778329219234006834
 CanvasRenderer:
@@ -927,20 +823,20 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 21.666666
+  m_fontSizeBase: 21.666666
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 4096
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -1028,9 +924,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 11.666666, y: 0}
+  m_SizeDelta: {x: -23.333332, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1592018170946956577
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1086,15 +982,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -1144,7 +1040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Barry.Theme::Barry.Theme.ThemeTarget
   colorRole: 14
-  applyColor: 0
+  applyColor: 1
   applyFont: 1
   fontRole: 0
 --- !u!1 &7970987718722868857
@@ -1175,7 +1071,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2668074558713435487}
+  - {fileID: 9047976555455793682}
   - {fileID: 7684930539264432624}
   - {fileID: 1173274451802478482}
   - {fileID: 6946342439741171884}
@@ -1225,7 +1121,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.7641208, y: 1.6}
-  m_SizeDelta: {x: 450, y: 780}
+  m_SizeDelta: {x: 450, y: 783.3333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2188894717576465440
 Canvas:
@@ -1246,7 +1142,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
   m_UseReflectionProbes: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 31
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1288,99 +1184,7 @@ MonoBehaviour:
   listRoot: {fileID: 6946342439741171884}
   itemTemplate: {fileID: 3870961279138963352}
   footer: {fileID: 3301742376079365709}
---- !u!1 &8283494984513058294
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1245221381802531104}
-  - component: {fileID: 340271702410737899}
-  - component: {fileID: 6050361178354120360}
-  - component: {fileID: 4430768729738030987}
-  m_Layer: 0
-  m_Name: FrameBorder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1245221381802531104
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8283494984513058294}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1868082550704290415}
-  m_Father: {fileID: 6300098028801288575}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &340271702410737899
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8283494984513058294}
-  m_CullTransparentMesh: 1
---- !u!114 &6050361178354120360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8283494984513058294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.7882353, g: 0.74509805, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!114 &4430768729738030987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8283494984513058294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62a5bb61a577e4fbda03ffc44e8947cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Barry.Theme::Barry.Theme.ThemeTarget
-  colorRole: 1
-  applyColor: 1
-  applyFont: 0
-  fontRole: 0
+  mmPerMockupPx: 1.6666666
 --- !u!1 &9086984505454598244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,7 +1196,8 @@ GameObject:
   - component: {fileID: 8294725883103423121}
   - component: {fileID: 7927169658301684177}
   - component: {fileID: 8076055276838690637}
-  - component: {fileID: 4212782264080753779}
+  - component: {fileID: 1867465195835973583}
+  - component: {fileID: 2975698047123218126}
   - component: {fileID: 2701437240310105294}
   - component: {fileID: 3870961279138963352}
   m_Layer: 0
@@ -1417,11 +1222,11 @@ RectTransform:
   - {fileID: 8499540950149532687}
   m_Father: {fileID: 6946342439741171884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 402, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 383.3333, y: 86.666664}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &7927169658301684177
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1442,8 +1247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.9529412, g: 0.94509804, b: 0.9254902, a: 1}
+  m_Material: {fileID: 2100000, guid: 8fb24a0f07f0c437e9c62986e74dc5b7, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1460,7 +1265,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4212782264080753779
+--- !u!114 &1867465195835973583
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1469,13 +1274,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 9086984505454598244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62a5bb61a577e4fbda03ffc44e8947cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 583eae7c11bbf43eca3767d17a70269b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Barry.Theme::Barry.Theme.ThemeTarget
-  colorRole: 4
-  applyColor: 0
-  applyFont: 0
-  fontRole: 0
+  m_EditorClassIdentifier: Barry.UI.Styling::Barry.UI.Styling.RoundedPanel
+  radiusMm: 16.666666
+  borderWidthMm: 1.6666666
+  glowSizeMm: 32
+  glowStrength: 0
+  glow: 0
+--- !u!114 &2975698047123218126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9086984505454598244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d585e3f0367434686a1aba0c23832746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Barry.UI::Barry.UI.PanelSkin
+  fill: {r: 0.96862745, g: 0.9607843, b: 0.9411765, a: 1}
+  border: {r: 0.85490197, g: 0.8352941, b: 0.79607844, a: 1}
+  borderWidthMm: 1.6666666
+  fillFollowsTheme: 0
+  borderFollowsTheme: 0
+  fillRole: 0
+  borderRole: 0
 --- !u!114 &2701437240310105294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1492,7 +1317,7 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: -1
-  m_PreferredHeight: 80
+  m_PreferredHeight: 86.666664
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1

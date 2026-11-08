@@ -1,15 +1,18 @@
 using Barry.Theme;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Barry.UI
 {
-    /// <summary>A pill: background Image + TMP label, coloured from a StatusTone.</summary>
+    /// <summary>A status pill: optional dot + word, coloured from a StatusTone (never colour alone).</summary>
     public sealed class ChipView : MonoBehaviour
     {
-        [SerializeField] Image background;
+        static readonly Color OverlayWhite = new Color(1f, 1f, 1f, 0.92f);
+
+        [SerializeField] PanelSkin skin;
+        [SerializeField] PanelSkin dot;
         [SerializeField] TMP_Text label;
+        [SerializeField] bool overlayStyle;   // white @92 % (camera-screen chips) instead of the tone's soft fill
         HeaderChipModel last;
         bool has;
 
@@ -25,7 +28,8 @@ namespace Barry.UI
             ToneColors.Resolve(last.Tone, ThemeApplier.Current, out var fg, out var bg);
             label.text = last.Text;
             label.color = fg;
-            if (background != null) background.color = bg;
+            if (skin != null) skin.SetColors(overlayStyle ? OverlayWhite : bg, Color.clear, 0f);
+            if (dot != null) dot.SetColors(fg, Color.clear, 0f);
         }
     }
 }

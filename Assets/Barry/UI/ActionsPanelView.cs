@@ -18,6 +18,9 @@ namespace Barry.UI
         [SerializeField] Button itemTemplate;      // inactive template, cloned per action
         [SerializeField] TMP_Text footer;
 
+        [SerializeField] float mmPerMockupPx = 1.6667f;
+        float BorderMm(float px) => px * mmPerMockupPx;
+
         readonly List<Button> spawned = new List<Button>();
         ActionsPanelModel model;
 
@@ -49,11 +52,15 @@ namespace Barry.UI
                 var label = b.GetComponentInChildren<TMP_Text>();
                 label.text = item.IsRunning ? item.Name + " · running…" : item.Name;
                 b.interactable = item.IsEnabled;
-                var img = b.GetComponent<Image>();
+                var skin = b.GetComponent<PanelSkin>();
                 if (k != null)
                 {
-                    img.color = item.IsHovered ? k.accentSoft : k.neutralFill;
-                    label.color = item.IsEnabled || item.IsRunning ? k.textPrimary : k.textSecondary;
+                    // Mockup: normal #F7F5F0/#DAD5CB 1px; hovered accentSoft + 2px accent; running #F3F1EC dashed-style #CFCAC0.
+                    if (item.IsHovered) skin.SetColors(k.accentSoft, k.accent, BorderMm(2f));
+                    else if (item.IsRunning) skin.SetColors(new Color32(0xF3, 0xF1, 0xEC, 255), new Color32(0xCF, 0xCA, 0xC0, 255), BorderMm(1f));
+                    else skin.SetColors(new Color32(0xF7, 0xF5, 0xF0, 255), k.neutralBorder, BorderMm(1f));
+                    label.color = item.IsRunning || !item.IsEnabled ? (Color)new Color32(0x6B, 0x6A, 0x65, 255) : k.textPrimary;
+                    label.fontStyle = item.IsHovered ? FontStyles.Bold : FontStyles.Normal;
                 }
                 b.onClick.AddListener(() => ActionChosen?.Invoke(id));
                 var trig = b.gameObject.AddComponent<EventTrigger>();

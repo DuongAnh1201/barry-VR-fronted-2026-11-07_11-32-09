@@ -108,6 +108,7 @@ namespace Barry.UI.Styling
         private Color borderColor = DefaultBorder;
         private Color effectColor = DefaultGlow;
         private bool useSoftShadow;
+        private bool customColors;
 
         public float RadiusMm => radiusMm;
         public float BorderWidthMm => borderWidthMm;
@@ -159,6 +160,30 @@ namespace Barry.UI.Styling
             return panel;
         }
 
+        /// <summary>
+        /// Override fill/border with explicit colours (chips, buttons, tracks). Survives theme changes;
+        /// the glow/shadow still follows the theme. Additive API used by Barry.UI.PanelSkin.
+        /// </summary>
+        public void SetColors(Color fill, Color border)
+        {
+            customColors = true;
+            fillColor = fill;
+            borderColor = border;
+            if (graphic != null) graphic.SetVerticesDirty();
+        }
+
+        public void SetBorderWidth(float widthMm)
+        {
+            borderWidthMm = Mathf.Max(0f, widthMm);
+            if (graphic != null) graphic.SetVerticesDirty();
+        }
+
+        public void SetRadius(float radius)
+        {
+            radiusMm = Mathf.Max(0f, radius);
+            if (graphic != null) graphic.SetVerticesDirty();
+        }
+
         public void SetStyle(float radius, float borderWidth, float effectSize, Color border, Color effect)
         {
             radiusMm = Mathf.Max(0f, radius);
@@ -173,15 +198,21 @@ namespace Barry.UI.Styling
         {
             if (tokens == null)
             {
-                fillColor = DefaultFill;
-                borderColor = DefaultBorder;
+                if (!customColors)
+                {
+                    fillColor = DefaultFill;
+                    borderColor = DefaultBorder;
+                }
                 effectColor = DefaultGlow;
                 useSoftShadow = false;
             }
             else
             {
-                fillColor = tokens.panelBg;
-                borderColor = tokens.panelBorder;
+                if (!customColors)
+                {
+                    fillColor = tokens.panelBg;
+                    borderColor = tokens.panelBorder;
+                }
                 useSoftShadow = tokens.useSoftShadowInsteadOfGlow;
                 effectColor = useSoftShadow ? Color.black : tokens.panelGlow;
                 effectColor.a = 1f;
